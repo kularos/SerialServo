@@ -61,14 +61,14 @@ typedef struct{
 
 // Sensor and actuator structural definitions.
 typedef struct{
-    uint8_t nDim;              // Number of dimensions in the sense vector this sensor receives.
+    uint8_t nDim = 1;              // Number of dimensions in the sense vector this sensor receives.
     uint16_t *senseVec[nDim];  // Array of pointers to the uint16_t normalization of the sense vector.
 
     byte (*updateSense)(void); // physically reads sense vector from peripheral devices.
 } sensor;
 
 typedef struct{
-    uint8_t nDim;               // Number of dimensions in the control vector this actuator receives.
+    uint8_t nDim = 1;               // Number of dimensions in the control vector this actuator receives.
     uint16_t *controlVec[nDim]; // Array of pointers to the uint16_t normalization of the control vector.
 
     byte (*updateControl)(void);        // physically writes control vector to peripheral devices.
