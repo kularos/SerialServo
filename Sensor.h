@@ -14,7 +14,7 @@
 // Sensor and actuator structural definitions.
 class Sensor{
 public:
-    Sensor(uint8_t nDim): sensorDim(nDim) {};      // Constructor
+    Sensor(uint8_t nDim);      // Constructor
     ~Sensor();
 
     const uint8_t sensorDim;             // Number of dimensions in the sense vector this sensor receives.
