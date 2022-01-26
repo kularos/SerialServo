@@ -24,9 +24,6 @@
 #ifndef SERIALSERVO_SERIALSERVO_H
 #define SERIALSERVO_SERIALSERVO_H
 #include <Arduino.h>
-#include <Wire.h>
-#include "Adafruit_SHT31.h"
-
 
 // Serial interface byte definitions:
 #define END_BYTE       0x0A
@@ -44,8 +41,9 @@
 #define CMD_EXE_ERROR  0x43  // An error occured during command execution.
 #define DAT_IDX_ERROR  0x44  // The provided amount of data was not consistent with the expected amount for the command.
 #define RSP_IDX_ERROR  0x45  // The generated response was not consistent with the expected length for the command.
-#define SENSOR_ERROR   0x49
+
 #define CONTROL_ERROR  0x4A
+#define SENSOR_ERROR   0x49
 
 
 //#define uint8_t unsigned char
@@ -59,20 +57,6 @@ typedef struct{
     uint8_t responseBytes; // The number of bytes that are expected to comprise this command's response.
 } command;
 
-// Sensor and actuator structural definitions.
-typedef struct{
-    uint8_t nDim = 1;              // Number of dimensions in the sense vector this sensor receives.
-    uint16_t *senseVec[nDim];  // Array of pointers to the uint16_t normalization of the sense vector.
-
-    byte (*updateSense)(void); // physically reads sense vector from peripheral devices.
-} sensor;
-
-typedef struct{
-    uint8_t nDim = 1;               // Number of dimensions in the control vector this actuator receives.
-    uint16_t *controlVec[nDim]; // Array of pointers to the uint16_t normalization of the control vector.
-
-    byte (*updateControl)(void);        // physically writes control vector to peripheral devices.
-} actuator;
 
 
 class SerialServo{
@@ -81,7 +65,3 @@ class SerialServo{
 
 
 #endif //SERIALSERVO_SERIALSERVO_H
-
-
-*
-
