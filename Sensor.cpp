@@ -7,14 +7,13 @@
 
 #define NO_SENSOR 0x50
 
-void Sensor::Sensor(uint8_t nDim) {
-    sensorDim = nDim;
+Sensor::Sensor(uint8_t nDim) {
 
     readBuffer = new  uint16_t[nDim];
-    senseVec   = new *uint16_t[nDim];
+    senseVec   = new uint16_t *[nDim];
 }
 
-void Sensor::~Sensor() {
+Sensor::~Sensor() {
     delete []readBuffer;
     delete []senseVec;
 }
