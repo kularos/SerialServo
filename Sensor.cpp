@@ -7,11 +7,11 @@
 
 #define NO_SENSOR 0x50
 
-byte Sensor::readSense(void){
+byte Sensor<nDim>::readSense(void){
     return NO_SENSOR;
 }
 
-byte Sensor::updateSense(void){
+byte Sensor<nDim>::updateSense(void){
     // Attempt to read the sensor
     byte senseError = readSense();
 
