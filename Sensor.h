@@ -21,12 +21,11 @@ public:
     void attach(uint16_t *vecAddress[]); // Binds the vector addresses to the servo.
 
 private:
-    uint16_t *senseVec [];              // Array of pointers to the uint16_t normalization of the sense vector.
-    uint16_t readBuffer [];             // Buffer for storing values after read.
-
     byte senseError = NO_ERROR;         // Flag to track if the sense reading was bad.
     byte readSense(void);               // function to read sensor value
 
+    uint16_t *senseVec [];              // Array of pointers to the uint16_t normalization of the sense vector.
+    uint16_t readBuffer [];             // Buffer for storing values after read.
 }
 
 
