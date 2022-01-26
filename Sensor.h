@@ -14,7 +14,7 @@
 // Sensor and actuator structural definitions.
 class Sensor{
 public:
-    Sensor(uint8_t n);      // Constructor
+    Sensor(uint8_t n) nDim(n), senseVec[n], readBuffer[n];      // Constructor
 
     const uint8_t nDim;                 // Number of dimensions in the sense vector this sensor receives.
     byte updateSense(void);              // calls readSense, and writes values to senseVec, returning the error code.

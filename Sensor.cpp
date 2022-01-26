@@ -7,9 +7,8 @@
 
 Sensor::Sensor(uint8_t n){
     nDim = n;
-    senseVec [nDim];
+    senseVec[nDim];
     readBuffer[nDim];
-
 }
 
 byte Sensor::updateSense(void){
