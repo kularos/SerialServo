@@ -21,7 +21,7 @@ Sensor::~Sensor() {
 byte Sensor::readSense(void){
     /* Template for reading physical sensor. Result of the read should be written to the read buffer*/
 
-    for(i=0; i<nSense; i++){
+    for(i=0; i<sensorDim; i++){
         readBuffer[i] = 0;
     }
 
@@ -30,7 +30,7 @@ byte Sensor::readSense(void){
 
 void Sensor::attach(int **vecAddress) {
     /* Attach addresses of sense vec to an external registry.*/
-    for(i=0; i<nSense; i++){
+    for(i=0; i<sensorDim; i++){
         senseVec[i] = vecAddress[i];
     }
 }
@@ -44,7 +44,7 @@ byte Sensor::updateSense(void){
         return senseError;
     }
     else{
-        for(i=0; i<nSense; i++){
+        for(i=0; i<sensorDim; i++){
             senseVec[i] = readBuffer[i];
         }
 
