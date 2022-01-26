@@ -15,9 +15,10 @@ byte Sensor::updateSense(void){
     // Attempt to read the sensor
     senseError = readSense();
 
+    // Manage sensor errors
     if(senseError != NO_ERROR){
-
+        return senseError;
     }
-
+    else{ return NO_ERROR}
 }
 
