@@ -16,14 +16,12 @@ class Sensor{
 public:
     Sensor(uint8_t nDim);      // Constructor
     ~Sensor();
+    void attach(uint16_t *vecAddress[]); // Binds the vector addresses to the servo.
 
     const uint8_t sensorDim;             // Number of dimensions in the sense vector this sensor receives.
     byte updateSense(void);             // calls readSense, and writes values to senseVec, returning the error code.
 
-    void attach(uint16_t *vecAddress[]); // Binds the vector addresses to the servo.
-
 private:
-    byte senseError = NO_ERROR;         // Flag to track if the sense reading was bad.
     byte readSense(void);               // function to read sensor value
 
     uint16_t **senseVec;              // Array of pointers to the uint16_t normalization of the sense vector.
