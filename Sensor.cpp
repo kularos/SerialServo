@@ -12,7 +12,7 @@ Sensor::Sensor(uint8_t n){
 
 }
 
-Sensor::updateSense(void){
+byte Sensor::updateSense(void){
     // Attempt to read the sensor
     senseError = readSense();
 
