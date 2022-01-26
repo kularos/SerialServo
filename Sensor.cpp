@@ -5,7 +5,7 @@
 #include "SerialServo.h"
 #include "Sensor.h"
 
-#define NO_SENSOR = 0x50
+#define NO_SENSOR 0x50
 
 byte Sensor::readSense(void){
     return NO_SENSOR;

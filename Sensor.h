@@ -15,7 +15,7 @@
 template <uint8_t nDim>
 class Sensor{
 public:
-    Sensor(): sensorDim(nDim), senseVec{0}, readBuffer{0};      // Constructor
+    Sensor(): sensorDim(nDim), senseVec{0}, readBuffer{0} {};      // Constructor
 
     const uint8_t sensorDim;                 // Number of dimensions in the sense vector this sensor receives.
     byte updateSense(void);             // calls readSense, and writes values to senseVec, returning the error code.
