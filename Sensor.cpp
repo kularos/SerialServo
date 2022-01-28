@@ -10,20 +10,20 @@
 
 // (De)initializers:
 Sensor::Sensor(uint8_t nDim): senseDim(nDim) {
-    senseBuffer = new uint16_t[nDim];
-    senseVec    = new uint16_t *[nDim];
+    senseVecAddress = new uint16_t *[nDim];
+    senseBuffer     = new uint16_t[nDim];
 }
 
 Sensor::~Sensor() {
-    delete []senseBuffer;
     delete []senseVecAddress;
+    delete []senseBuffer;
 }
 
 
 // Methods common to all sensors:
 byte Sensor::getSense(void){
     // Attempt to read the sensor
-    byte senseError = readSense();
+    byte senseError = updateSense();
 
     // Manage sensor errors
     if(senseError != NO_ERROR){return senseError;}

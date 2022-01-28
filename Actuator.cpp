@@ -37,6 +37,6 @@ byte Actuator::deinit() {
     return NO_ACTUATOR;
 }
 
-byte Actuator::writeControl() {
+byte Actuator::setControl() {
     return NO_ACTUATOR
 }
