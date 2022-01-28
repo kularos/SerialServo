@@ -14,7 +14,7 @@ const uint8_t arrayTotal(uint8_t *arr){
         total += arr[i];
     }
 
-    return total;
+    return const total;
 }
 
 
