@@ -5,7 +5,7 @@
 #include "SerialServo.h"
 
 
-uint8_t arrayTotal(uint8_t *arr){
+const uint8_t arrayTotal(uint8_t *arr){
     /* This function takes an integer array, and returns the sum of all entries.*/
     uint8_t arrLength = *(&arr + 1) - arr;
 
