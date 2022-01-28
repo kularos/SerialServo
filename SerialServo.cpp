@@ -5,12 +5,12 @@
 #include "SerialServo.h"
 
 
-int arrayTotal(int *arr){
+uint8_t arrayTotal(uint8_t *arr){
     /* This function takes an integer array, and returns the sum of all entries.*/
-    int arrLength = *(&arr + 1) - arr;
+    uint8_t arrLength = *(&arr + 1) - arr;
 
-    int total = 0;
-    for(int i = 0; i<arrLength; i++){
+    uint8_t total = 0;
+    for(uint8_t i = 0; i<arrLength; i++){
         total += arr[i];
     }
 
