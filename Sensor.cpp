@@ -17,7 +17,7 @@ Sensor::~Sensor() {
     delete []senseVec;
 }
 
-byte Sensor::init(uint8_t *vecAddress[nSense]){
+byte Sensor::init(uint8_t *vecAddress[senseDim]){
     attach(vecAddress);
     return NO_ERROR;
 }
@@ -31,9 +31,9 @@ byte Sensor::readSense(void){
     return NO_SENSOR;
 }
 
-void Sensor::attach(uint8_t **vecAddress) {
+void Sensor::attach(uint8_t *vecAddress[senseDim]) {
     /* Attach addresses of sense vec to an external registry.*/
-    for(i=0; i<sensorDim; i++){senseVec[i] = vecAddress[i];}
+    for(i=0; i<senseDim; i++){senseVec[i] = vecAddress[i];}
 }
 
 byte Sensor::updateSense(void){
@@ -45,7 +45,7 @@ byte Sensor::updateSense(void){
 
     else{
         // Transfer the buffer to the sense vector & return no error.
-        for(i=0; i<sensorDim; i++){senseVec[i] = readBuffer[i];}
+        for(i=0; i<senseDim; i++){senseVec[i] = readBuffer[i];}
         return NO_ERROR;
     }
 }
