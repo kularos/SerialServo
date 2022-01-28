@@ -17,7 +17,7 @@ Sensor::~Sensor() {
     delete []senseVec;
 }
 
-byte Sensor::init(uint8_t **vecAddress){
+byte Sensor::init(uint8_t *vecAddress[nSense]){
     attach(vecAddress);
     return NO_ERROR;
 }
