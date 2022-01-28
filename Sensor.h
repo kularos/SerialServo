@@ -13,7 +13,7 @@
 // child classes must overwrite methods for initialization, de-initialization, and reading.
 class Sensor{
 public:
-    const uint8_t sensorDim;                // Number of dimensions in the sense vector this sensor receives.
+    const uint8_t senseDim;                // Number of dimensions in the sense vector this sensor receives.
     Sensor(uint8_t nDim);                   // Constructor takes number of dimensions.
     ~Sensor();
     byte init(uint16_t *vecAddress[]);      // Initializer of the sensor, returns error code.
