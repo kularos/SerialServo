@@ -31,7 +31,7 @@ senseDim(arrayTotal(senseDimVector)), controlDim(arrayTotal(controlDimVector))
     // Attach all downstream sub-servos:
 
     uint8_t i = 0; // indexer for full sense vector.
-    for(uinit8_t j = 0; j<nSensor; j++){
+    for(uint8_t j = 0; j<nSensor; j++){
 
         // initialize vecAddress for sensor j.
         const uint8_t nSensej = senseDimVector[j];
@@ -43,14 +43,14 @@ senseDim(arrayTotal(senseDimVector)), controlDim(arrayTotal(controlDimVector))
     }
 
     i = 0; // indexer for full control vector.
-    for(uinit8_t j = 0; j<nActuator; j++){
+    for(uint8_t j = 0; j<nActuator; j++){
 
         // Initialize vecAddress for actuator j.
         const uint8_t nControlj = controlDimVector[j];
         uint16_t *vecAddress[nControlj];
 
         // Iteratively fill vecAddress and attach sensor j.
-        for(uinit8_t k = 0; k<nControlj; k++){vecAddress[k] = &controlVector[i]; i++;}
+        for(uint8_t k = 0; k<nControlj; k++){vecAddress[k] = &controlVector[i]; i++;}
         attachedActuators.attach(vecAddress);
     }
 }
