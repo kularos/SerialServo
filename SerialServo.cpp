@@ -18,7 +18,7 @@ int arrayTotal(int *arr){
 }
 
 
-SerialServo::SerialServo(uint16_t id, Sensor **sensorList, Actuator **actuatorList):
+SerialServo::SerialServo(uint16_t id, Sensor *sensorList, Actuator *actuatorList):
 identifier(id),
 attachedSensors(sensorList), attachedActuators(actuatorList),
 senseDim(calcSenseDim()), controlDim(calcControlDim()) // must be initialized after sub-servo lists.

@@ -71,8 +71,8 @@ public:
     const uint8_t *senseDim; // array of the sense dim of each attached sensor.
     const uint8_t *controlDim;
 
-    const Sensor   **attachedSensors; // downstream physical servos
-    const Actuator **attachedActuators;
+    const Sensor   *attachedSensors; // downstream physical servos
+    const Actuator *attachedActuators;
 
     byte getSense();
     byte setControl();
