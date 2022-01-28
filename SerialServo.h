@@ -68,8 +68,8 @@ public:
 
     const uint16_t identifier; // 2-byte unique identifier for each servo.
 
-    const uint8_t *senseDim; // array of the sense dim of each attached sensor.
-    const uint8_t *controlDim;
+    const uint8_t senseDim;
+    const uint8_t controlDim;
 
     const Sensor   *attachedSensors; // downstream physical servos
     const Actuator *attachedActuators;
