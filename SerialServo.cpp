@@ -21,9 +21,39 @@ int arrayTotal(int *arr){
 SerialServo::SerialServo(uint16_t id, Sensor *sensorList, Actuator *actuatorList)
 :identifier(id),
 attachedSensors(sensorList), attachedActuators(actuatorList),
-senseDim(calcSenseDim())   , controlDim(calcControlDim()) {
+senseDimVector(calcSenseDim()), controlDimVector(calcControlDim()),
+senseDim(arrayTotal(senseDimVector)), controlDim(arrayTotal(controlDimVector))
+{
+    // Initialize control and sense vectors.
+    controlVector = new uint16_t[controlDim];
+    senseVector   = new uint16_t[senseDim];
 
-}; // must be initialized after sub-servo lists.
+    // Attach all downstream sub-servos:
+
+    uint8_t i = 0; // indexer for full sense vector.
+    for(uinit8_t j = 0; j<nSensor; j++){
+
+        // initialize vecAddress for sensor j.
+        const uint8_t nSensej = senseDimVector[j];
+        uint16_t *vecAddress[nSensej];
+
+        // iteratively fill vecAddress and attach sensor j.
+        for(uinit8_t k = 0; k<nSensej; k++){vecAddress[k] = &senseVector[i]; i++;}
+        attachedSensors[j].attach(senseVector);
+    }
+
+    i = 0; // indexer for full control vector.
+    for(uinit8_t j = 0; j<nActuator; j++){
+
+        // Initialize vecAddress for actuator j.
+        const uint8_t nControlj = controlDimVector[j];
+        uint16_t *vecAddress[nControlj];
+
+        // Iteratively fill vecAddress and attach sensor j.
+        for(uinit8_t k = 0; k<nControlj; k++){vecAddress[k] = &controlVector[i]; i++;}
+        attachedActuators.attach(vecAddress);
+    }
+}
 
 
 uint8_t SerialServo::calcControlDim() {

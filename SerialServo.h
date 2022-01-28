@@ -67,18 +67,24 @@ public:
     ~SerialServo();
 
     const uint16_t identifier; // 2-byte unique identifier for each servo.
-
-    const Sensor   *attachedSensors; // list of downstream physical servos
-    const Actuator *attachedActuators;
-
-    const uint8_t *senseDim; // list of dimensions in ctl/sns vector in downstream servos.
-    const uint8_t *controlDim;
+    const uint8_t  senseDim;
+    const uint8_t  controlDim;
 
     byte getSense(); // getter/setter for state vector.
     byte setControl();
 
 private:
-    uint16_t *controlVector; // state vectors
+    // Members for pipeline construction
+    const Sensor   *attachedSensors; // List of downstream sensors.
+    const uint8_t  nSensor;          // Number of downstream sensors.
+    const uint8_t  *senseDimVector;  // Vector of the senseDim of each downstream sensor.
+
+    const Actuator *attachedActuators;
+    const uint8_t  nActuator;
+    const uint8_t  *controlDimVector;
+
+    //Internal state vectors
+    uint16_t *controlVector;
     uint16_t *senseVector;
 
     uint8_t calcSenseDim();
