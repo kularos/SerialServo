@@ -7,6 +7,7 @@
 
 #define NO_SENSOR 0x50
 
+
 // (De)initializers:
 Sensor::Sensor(uint8_t nDim): senseDim(nDim) {
     senseBuffer = new uint16_t[nDim];
@@ -15,16 +16,12 @@ Sensor::Sensor(uint8_t nDim): senseDim(nDim) {
 
 Sensor::~Sensor() {
     delete []senseBuffer;
-    delete []senseVec;
+    delete []senseVecAddress;
 }
+
 
 // Methods common to all sensors:
-void Sensor::attach(uint16_t *vecAddress[]) {
-    /* Attach addresses of sense vec to an external registry.*/
-    for(uint8_t i=0; i<senseDim; i++){senseVec[i] = vecAddress[i];}
-}
-
-byte Sensor::updateSense(void){
+byte Sensor::getSense(void){
     // Attempt to read the sensor
     byte senseError = readSense();
 
@@ -33,14 +30,20 @@ byte Sensor::updateSense(void){
 
     else{
         // Transfer the buffer to the sense vector & return no error.
-        for(uint8_t i=0; i<senseDim; i++){*senseVec[i] = senseBuffer[i];}
+        for(uint8_t i=0; i<senseDim; i++){*senseVecAddress[i] = senseBuffer[i];}
         return NO_ERROR;
     }
 }
 
+void Sensor::attach(uint16_t *vecAddress[]) {
+    /* Attach addresses of sense vec to an external registry.*/
+    for (uint8_t i = 0; i < senseDim; i++) { senseVecAddress[i] = vecAddress[i];}
+}
+
+
 // Methods intended to be overwritten in child sensors:
 byte Sensor::init(uint16_t *vecAddress[]){
-    attach(vecAddress);
+    attach(vecAddress); // Must attach during initialization.
     return NO_SENSOR;
 }
 
@@ -48,9 +51,7 @@ byte Sensor::deinit(){
     return NO_SENSOR;
 }
 
-byte Sensor::readSense(void){
-    /* Template for reading physical sensor. Result of the read should be written to the read buffer*/
-
-    for(uint8_t i=0; i<senseDim; i++){senseBuffer[i] = 0;}
+byte Sensor::updateSense(void){
+    for(uint8_t i=0; i<senseDim; i++){senseBuffer[i] = 0;} // Template for reading physical sensor.
     return NO_SENSOR;
 }
