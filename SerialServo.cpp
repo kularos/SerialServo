@@ -47,8 +47,9 @@ uint8_t SerialServo::calcSenseDim() {
     uint8_t sensorDims[nSensor];
 
     // Iteratively fill sensorDims from each attached sensor.
-    for(uint8_t i = 0; i<nSensor; i++){
+    for (uint8_t i = 0; i < nSensor; i++) {
         sensorDims[i] = attachedSensors[i].senseDim;
     }
 
     return sensorDims;
+}
