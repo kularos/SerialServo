@@ -19,7 +19,7 @@ Sensor::~Sensor() {
 }
 
 // Methods common to all sensors:
-void Sensor::attach(uint8_t *vecAddress[]) {
+void Sensor::attach(uint16_t *vecAddress[]) {
     /* Attach addresses of sense vec to an external registry.*/
     for(uint8_t i=0; i<senseDim; i++){senseVec[i] = vecAddress[i];}
 }
@@ -33,13 +33,13 @@ byte Sensor::updateSense(void){
 
     else{
         // Transfer the buffer to the sense vector & return no error.
-        for(uint8_t i=0; i<senseDim; i++){senseVec[i] = senseBuffer[i];}
+        for(uint8_t i=0; i<senseDim; i++){*senseVec[i] = senseBuffer[i];}
         return NO_ERROR;
     }
 }
 
 // Methods intended to be overwritten in child sensors:
-byte Sensor::init(uint8_t *vecAddress[]){
+byte Sensor::init(uint16_t *vecAddress[]){
     attach(vecAddress);
     return NO_SENSOR;
 }
