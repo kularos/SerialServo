@@ -24,6 +24,8 @@
 #ifndef SERIALSERVO_SERIALSERVO_H
 #define SERIALSERVO_SERIALSERVO_H
 #include <Arduino.h>
+#include "Sensor.h"
+#include "Actuator.h"
 
 // Serial interface byte definitions:
 #define END_BYTE       0x0A
@@ -60,6 +62,27 @@ typedef struct{
 
 
 class SerialServo{
+public:
+    SerialServo(uint16_t id, Sensor *sensorList[], Actuator *actuatorList[]);
+    ~SerialServo()
+
+    const uint16_t identifier; // 2-byte unique identifier for each servo.
+
+    const uint8_t *senseDim; // array of the sense dim of each attached sensor.
+    const uint8_t *controlDim;
+
+    const Sensor   **attachedSensors; // downstream physical servos
+    const Actuator **attachedActuators;
+
+    byte getSense();
+    byte setControl();
+
+private:
+    uint16_t *controlVector; // state vectors
+    uint16_t *senseVector;
+
+    uint8_t calcSenseDim();
+    uint8_t calcControlDim();
 
 };
 
