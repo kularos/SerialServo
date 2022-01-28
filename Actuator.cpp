@@ -38,5 +38,5 @@ byte Actuator::deinit() {
 }
 
 byte Actuator::setControl() {
-    return NO_ACTUATOR
+    return NO_ACTUATOR;
 }
