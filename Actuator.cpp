@@ -19,8 +19,6 @@ Actuator::~Actuator() {
 
 
 // Methods common to all actuators:
-
-
 void Actuator::attach(uint16_t *vecAddress[]) {
     /* Attach addresses of control vec to an external registry.*/
     for (uint8_t i = 0; i < controlDim; i++) { controlVecAddress[i] = vecAddress[i]; }
