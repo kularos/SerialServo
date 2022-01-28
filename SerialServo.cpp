@@ -60,7 +60,7 @@ uint8_t SerialServo::calcControlDim() {
 
     // Initialize array for storing each actuator's controlDim.
     const uint8_t nActuator = *(&attachedActuators + 1) - attachedActuators;
-    uint8_t actuatorDims[nActuator];
+    const uint8_t actuatorDims[nActuator];
 
     // Iteratively fill actuatorDims from each attached actuator.
     for(uint8_t i = 0; i<nActuator; i++){
@@ -74,7 +74,7 @@ uint8_t SerialServo::calcSenseDim() {
 
     // Initialize array for storing each sensor's senseDim.
     const uint8_t nSensor = *(&attachedSensors + 1) - attachedSensors;
-    uint8_t sensorDims[nSensor];
+    const uint8_t sensorDims[nSensor];
 
     // Iteratively fill sensorDims from each attached sensor.
     for (uint8_t i = 0; i < nSensor; i++) {
