@@ -22,7 +22,7 @@ byte Sensor::init(uint8_t *vecAddress[senseDim]){
     return NO_ERROR;
 }
 
-void Sensor::deinit(){}
+byte Sensor::deinit(){}
 
 byte Sensor::readSense(void){
     /* Template for reading physical sensor. Result of the read should be written to the read buffer*/
