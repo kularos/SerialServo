@@ -18,39 +18,37 @@ int arrayTotal(int *arr){
 }
 
 
-SerialServo::SerialServo(uint16_t id, Sensor *sensorList, Actuator *actuatorList) {}
-:
-identifier(id),
+SerialServo::SerialServo(uint16_t id, Sensor *sensorList, Actuator *actuatorList)
+:identifier(id),
 attachedSensors(sensorList), attachedActuators(actuatorList),
-senseDim(calcSenseDim()), controlDim(calcControlDim()); // must be initialized after sub-servo lists.
+senseDim(calcSenseDim())   , controlDim(calcControlDim()) {
+
+}; // must be initialized after sub-servo lists.
 
 
 uint8_t SerialServo::calcControlDim() {
 
-    // Initialize counter for total control dims in attached actuators.
-    uint8_t nActuator = *(&attachedActuators + 1) - attachedActuators;
-    uint8_t nDim = 0;
+    // Initialize array for storing each actuator's controlDim.
+    const uint8_t nActuator = *(&attachedActuators + 1) - attachedActuators;
+    uint8_t actuatorDims[nActuator];
 
-    // Iterate through all attached actuators, and
+    // Iteratively fill actuatorDims from each attached actuator.
     for(uint8_t i = 0; i<nActuator; i++){
-        nDim += attachedActuators[i].controlDim;
+        actuatorDims[i] = attachedActuators[i].controlDim;
     }
 
-    return nDim;
-
+    return actuatorDims;
 }
 
 uint8_t SerialServo::calcSenseDim() {
 
-    // Initialize counter for total control dims in attached actuators.
-    uint8_t nSensor = *(&attachedSensors + 1) - attachedSensors;
-    uint8_t nDim = 0;
+    // Initialize array for storing each sensor's senseDim.
+    const uint8_t nSensor = *(&attachedSensors + 1) - attachedSensors;
+    uint8_t sensorDims[nSensor];
 
-    // Iterate through all attached actuators, and
+    // Iteratively fill sensorDims from each attached sensor.
     for(uint8_t i = 0; i<nSensor; i++){
-        nDim += attachedSensors[i].senseDim;
+        sensorDims[i] = attachedSensors[i].senseDim;
     }
 
-    return nDim;
-
-}
+    return sensorDims;
