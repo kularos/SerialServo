@@ -51,7 +51,7 @@ senseDim(arrayTotal(senseDimVector)), controlDim(arrayTotal(controlDimVector))
 
         // Iteratively fill vecAddress and attach sensor j.
         for(uint8_t k = 0; k<nControlj; k++){vecAddress[k] = &controlVector[i]; i++;}
-        attachedActuators.attach(vecAddress);
+        attachedActuators[j].attach(vecAddress);
     }
 }
 
