@@ -37,7 +37,7 @@ uint8_t SerialServo::calcControlDim() {
         nDim += attachedActuators[i].controlDim;
     }
 
-    return nDim
+    return nDim;
 
 }
 
@@ -52,6 +52,6 @@ uint8_t SerialServo::calcSenseDim() {
         nDim += attachedSensors[i].senseDim;
     }
 
-    return nDim
+    return nDim;
 
 }
