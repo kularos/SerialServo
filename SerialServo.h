@@ -63,7 +63,7 @@ typedef struct{
 
 class SerialServo{
 public:
-    SerialServo(uint16_t id, Sensor **sensorList, Actuator **actuatorList);
+    SerialServo(uint16_t id, Sensor *sensorList, Actuator *actuatorList);
     ~SerialServo();
 
     const uint16_t identifier; // 2-byte unique identifier for each servo.
