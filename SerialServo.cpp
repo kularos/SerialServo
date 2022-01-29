@@ -17,7 +17,7 @@ uint8_t arrayTotal(uint8_t *arr){
     return total;
 }
 
-/*
+/* Broken TODO fix (replace).
 SerialServo::SerialServo(uint16_t id, Sensor *sensorList, Actuator *actuatorList)
 :identifier(id)
 {
@@ -54,7 +54,7 @@ SerialServo::SerialServo(uint16_t id, Sensor *sensorList, Actuator *actuatorList
         attachedActuators[j].attach(vecAddress);
     }
 }
-*/
+
 
 uint8_t SerialServo::calcControlDim() {
 
@@ -83,3 +83,4 @@ uint8_t SerialServo::calcSenseDim() {
 
     return sensorDims;
 }
+*/
