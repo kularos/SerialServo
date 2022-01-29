@@ -21,12 +21,15 @@ uint8_t arrayTotal(uint8_t *arr){
 SerialServo::SerialServo(uint16_t id, Sensor *sensorList, Actuator *actuatorList)
 :identifier(id),
 attachedSensors(sensorList), attachedActuators(actuatorList),
-senseDimVector(calcSenseDim()), controlDimVector(calcControlDim()),
-senseDim(arrayTotal(senseDimVector)), controlDim(arrayTotal(controlDimVector))
+senseDimVector(calcSenseDim()), controlDimVector(calcControlDim())
 {
     // Initialize control and sense vectors.
-    controlVector = new uint16_t[controlDim];
+    const uint8_t senseDim = arrayTotal(senseDimVector);
     senseVector   = new uint16_t[senseDim];
+
+    const uint8_t controlDim = arrayTotal(controlDimVector);
+    controlVector = new uint16_t[controlDim];
+
 
     // Attach all downstream sub-servos:
 
