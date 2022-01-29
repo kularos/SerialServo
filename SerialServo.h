@@ -67,8 +67,8 @@ public:
     ~SerialServo();
 
     const uint16_t identifier; // 2-byte unique identifier for each servo.
-    const uint8_t  senseDim;
-    const uint8_t  controlDim;
+    //const uint8_t  senseDim;
+    //const uint8_t  controlDim;
 
     byte getSense(); // getter/setter for state vector.
     byte setControl();
