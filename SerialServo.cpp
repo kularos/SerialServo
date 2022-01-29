@@ -4,9 +4,9 @@
 
 #include "SerialServo.h"
 
-
+/*
 uint8_t arrayTotal(uint8_t *arr){
-    /* This function takes an integer array, and returns the sum of all entries.*/
+    // This function takes an integer array, and returns the sum of all entries.
     uint8_t arrLength = *(&arr + 1) - arr;
 
     uint8_t total = 0;
@@ -62,10 +62,10 @@ attachedActuators(actuatorList), controlDimVector(calcControlDim())
 uint8_t SerialServo::calcControlDim() {
 
     // Initialize array for storing each actuator's controlDim.
-    const uint8_t nActuator = *(&attachedActuators + 1) - attachedActuators;
+    uint8_t nActuator = *(&attachedActuators + 1) - attachedActuators;
 
     // Iteratively fill actuatorDims from each attached actuator.
-    uint8_t actuatorDims[nActuator];
+    actuatorDims = new uint8_t[nActuator];
     for(uint8_t i = 0; i<nActuator; i++){
         actuatorDims[i] = attachedActuators[i].controlDim;
     }
@@ -86,3 +86,4 @@ uint8_t SerialServo::calcSenseDim() {
 
     return sensorDims;
 }
+ */

@@ -11,7 +11,7 @@
 // (De)initializers:
 Sensor::Sensor(uint8_t nDim): senseDim(nDim) {
     senseVecAddress = new uint16_t *[nDim];
-    senseBuffer     = new uint16_t[nDim];
+    senseBuffer     = new uint16_t  [nDim];
 }
 
 Sensor::~Sensor() {

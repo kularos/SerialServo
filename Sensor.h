@@ -20,7 +20,7 @@ public:
     Sensor(uint8_t nDim);                   // Constructor only takes number of dimensions.
     ~Sensor();                              // Since addresses aren't necessarily known at construction.
 
-    const uint8_t senseDim;                 // Number of dimensions in the sense vector that this sensor receives.
+    uint8_t senseDim;                 // Number of dimensions in the sense vector that this sensor receives.
     byte init(uint16_t *vecAddress[]);      // Initializer of the sensor, returns error code.
     byte deinit();                          // De-initializer.
     byte getSense(void);                    // Calls readSense, writes to senseVec, and returns error code.
