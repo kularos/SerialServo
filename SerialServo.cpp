@@ -24,10 +24,10 @@ attachedSensors(sensorList), senseDimVector(calcSenseDim()),
 attachedActuators(actuatorList), controlDimVector(calcControlDim())
 {
     // Initialize control and sense vectors.
-    uint8_t senseDim = arrayTotal(*senseDimVector);
+    uint8_t senseDim = arrayTotal(senseDimVector);
     senseVector   = new uint16_t[senseDim];
 
-    uint8_t controlDim = arrayTotal(*controlDimVector);
+    uint8_t controlDim = arrayTotal(controlDimVector);
     controlVector = new uint16_t[controlDim];
 
 
