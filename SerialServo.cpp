@@ -20,8 +20,8 @@ uint8_t arrayTotal(uint8_t *arr){
 
 SerialServo::SerialServo(uint16_t id, Sensor *sensorList, Actuator *actuatorList)
 :identifier(id),
-attachedSensors(sensorList), //senseDimVector(calcSenseDim()),
-attachedActuators(actuatorList)//, controlDimVector(calcControlDim())
+attachedSensors(sensorList), senseDimVector(calcSenseDim()),
+attachedActuators(actuatorList), controlDimVector(calcControlDim())
 {
     // Initialize control and sense vectors.
     uint8_t senseDim = arrayTotal(*senseDimVector);
