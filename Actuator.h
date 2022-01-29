@@ -20,7 +20,7 @@ public:
     Actuator(uint8_t nDim);                 // Constructor only takes number of dimensions,
     ~Actuator();                            // Since addresses aren't necessarily known at construction.
 
-    const uint8_t controlDim;               // Number of dimensions in the control vector that this actuator receives.
+    uint8_t controlDim;                     // Number of dimensions in the control vector that this actuator receives.
     byte init(uint16_t *vecAddress[]);      // Initializer of the actuator, returns error code.
     byte deinit();                          // de-initializer.
     byte setControl(void);                  // function to write values from control vector to actuator.
@@ -31,3 +31,6 @@ private:
 };
 
 #endif //SERIALSERVO_ACTUATOR_H
+
+
+
