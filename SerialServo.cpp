@@ -4,7 +4,7 @@
 
 #include "SerialServo.h"
 
-/*
+
 uint8_t arrayTotal(uint8_t *arr){
     // This function takes an integer array, and returns the sum of all entries.
     uint8_t arrLength = *(&arr + 1) - arr;
@@ -17,21 +17,12 @@ uint8_t arrayTotal(uint8_t *arr){
     return total;
 }
 
-
+/*
 SerialServo::SerialServo(uint16_t id, Sensor *sensorList, Actuator *actuatorList)
-:identifier(id),
-attachedSensors(sensorList), senseDimVector(calcSenseDim()),
-attachedActuators(actuatorList), controlDimVector(calcControlDim())
+:identifier(id)
 {
-    // Initialize control and sense vectors.
-    uint8_t senseDim = arrayTotal(senseDimVector);
-    senseVector   = new uint16_t[senseDim];
-
-    uint8_t controlDim = arrayTotal(controlDimVector);
-    controlVector = new uint16_t[controlDim];
-
-
-    // Attach all downstream sub-servos:
+    // Initialize and attach sense vector:
+    uint8_t senseDim = 0;
 
     uint8_t i = 0; // indexer for full sense vector.
     for(uint8_t j = 0; j<nSensor; j++){
@@ -44,6 +35,12 @@ attachedActuators(actuatorList), controlDimVector(calcControlDim())
         for(uint8_t k = 0; k<nSensej; k++){vecAddress[k] = &senseVector[i]; i++;}
         attachedSensors[j].attach(senseVector);
     }
+    senseVector   = new uint16_t[senseDim];
+
+
+    // Initialize and attach control vector:
+    uint8_t controlDim = arrayTotal(controlDimVector);
+    controlVector = new uint16_t[controlDim];
 
     i = 0; // indexer for full control vector.
     for(uint8_t j = 0; j<nActuator; j++){
@@ -57,7 +54,7 @@ attachedActuators(actuatorList), controlDimVector(calcControlDim())
         attachedActuators[j].attach(vecAddress);
     }
 }
-
+*/
 
 uint8_t SerialServo::calcControlDim() {
 
@@ -86,4 +83,3 @@ uint8_t SerialServo::calcSenseDim() {
 
     return sensorDims;
 }
- */
